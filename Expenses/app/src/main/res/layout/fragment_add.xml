@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.add.AddFragment">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TextInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_double"
+        android:layout_marginTop="@dimen/margin_quadra"
+        android:layout_marginEnd="@dimen/margin_double"
+        app:boxCornerRadiusBottomEnd="@dimen/margin_double"
+        app:boxCornerRadiusBottomStart="@dimen/margin_double"
+        app:boxCornerRadiusTopEnd="@dimen/margin_double"
+        app:boxCornerRadiusTopStart="@dimen/margin_double"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/add_exp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Explanation" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/exp_Edit"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_double"
+        android:layout_marginStart="@dimen/margin_double"
+        android:layout_marginEnd="@dimen/margin_double"
+        app:boxCornerRadiusBottomEnd="@dimen/margin_double"
+        app:boxCornerRadiusBottomStart="@dimen/margin_double"
+        app:boxCornerRadiusTopEnd="@dimen/margin_double"
+        app:boxCornerRadiusTopStart="@dimen/margin_double"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/add_expense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Expense" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <RadioGroup
+        android:id="@+id/RChoice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exp_Edit">
+
+        <RadioButton
+            android:id="@+id/Bill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bill" />
+
+        <RadioButton
+            android:id="@+id/Rent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rent" />
+
+        <RadioButton
+            android:id="@+id/Other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Other" />
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/RMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/RChoice">
+
+        <RadioButton
+            android:id="@+id/TL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TL" />
+
+        <RadioButton
+            android:id="@+id/USD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dolar" />
+
+        <RadioButton
+            android:id="@+id/EURO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Euro" />
+
+        <RadioButton
+            android:id="@+id/GBP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sterlin" />
+
+    </RadioGroup>
+
+
+    <Button
+        android:id="@+id/nc_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/orange"
+        android:text="Save"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/RMoney" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

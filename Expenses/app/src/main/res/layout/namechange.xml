@@ -14,6 +14,10 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:hint="Your Name"
+        app:boxCornerRadiusBottomEnd="@dimen/margin_double"
+        app:boxCornerRadiusBottomStart="@dimen/margin_double"
+        app:boxCornerRadiusTopEnd="@dimen/margin_double"
+        app:boxCornerRadiusTopStart="@dimen/margin_double"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -36,28 +40,24 @@
             android:id="@+id/Male"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="Male"
-            android:onClick="CheckButton"
-            android:checked="true"/>
+            android:text="Male"/>
 
         <RadioButton
             android:id="@+id/Female"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="Female"
-            android:onClick="CheckButton"/>
+            android:text="Female"/>
 
         <RadioButton
             android:id="@+id/Unknown"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="Other"
-            android:onClick="CheckButton"/>
+            android:text="Other"/>
 
     </RadioGroup>
 
     <Button
-        android:id="@+id/Cancel"
+        android:id="@+id/nc_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/Rgroup"
@@ -69,7 +69,7 @@
         android:textColor="@color/white"/>
 
     <Button
-        android:id="@+id/Apply"
+        android:id="@+id/nc_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/Rgroup"

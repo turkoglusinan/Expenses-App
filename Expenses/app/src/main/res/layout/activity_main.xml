@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".OnBoarding.MainActivity">
 
-    <com.example.expenses.CarouselPager
+    <com.example.expenses.OnBoarding.CarouselPager
         android:id="@+id/carouselPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
