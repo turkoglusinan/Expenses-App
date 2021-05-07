@@ -64,7 +64,7 @@ class AddFragment : Fragment() {
             }
             //Create User Object
             val spending =
-                Expense( explanation, Integer.parseInt(expenses.toString()), type, currency)
+                Expense( explanation, expenses.toString().toDouble(), type, currency)
             //add data to database
             mExpenseViewModel.addExpense(spending)
             Toast.makeText(requireContext(), "Successfully Added!", Toast.LENGTH_SHORT).show()

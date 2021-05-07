@@ -10,8 +10,12 @@ import android.widget.Button
 import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.expenses.R
+import com.example.expenses.fragments.Data.ExpenseViewModel
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.fragment_main_page.view.*
 
@@ -21,6 +25,7 @@ class MainPage : Fragment() {
     val GENDER = "Gender"
     val FILE = "com.example.expenses"
     lateinit var v: View
+    private lateinit var mExpenseViewModel: ExpenseViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +33,19 @@ class MainPage : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_main_page, container, false)
+
+        //RecyclerView
+        val adapter = ListAdapter()
+        val recyclerView = v.ah_recycler
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        //userViewModel
+        mExpenseViewModel = ViewModelProvider(this).get(ExpenseViewModel::class.java)
+        mExpenseViewModel.readAllData.observe(viewLifecycleOwner, Observer { expense ->
+            adapter.setData(expense)
+        })
+
         val name = v.ah_name
         v.ah_floatingaddbtn.setOnClickListener{
             findNavController().navigate(R.id.action_mainPage_to_addFragment)
@@ -76,6 +94,8 @@ class MainPage : Fragment() {
             mBuilder.dismiss()
         }
     }
+
+
 
 
 }
