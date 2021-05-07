@@ -3,6 +3,8 @@ package com.example.expenses.fragments.list
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.expenses.R
 import com.example.expenses.fragments.Data.Expense
@@ -32,6 +34,20 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
                 else -> R.drawable.other_icon
             }
         )
+        holder.itemView.riIcon.setColorFilter(
+            ContextCompat.getColor(holder.itemView.context,
+            when(currentItem.type) {
+                0 -> R.color.orange
+                1 -> R.color.colorLightGreen
+                2 -> R.color.colorDarkGreen
+                else -> R.color.darkOrange
+            }
+        ), android.graphics.PorterDuff.Mode.SRC_IN)
+
+        holder.itemView.recycler_item_id.setOnClickListener{
+            val action = MainPageDirections.actionMainPageToDeleteFragment(currentItem)
+            holder.itemView.findNavController().navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {

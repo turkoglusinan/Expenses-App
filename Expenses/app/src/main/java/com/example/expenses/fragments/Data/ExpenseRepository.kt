@@ -10,4 +10,8 @@ class ExpenseRepository(private val expenseDao: ExpenseDao) {
         expenseDao.addExpense(expense)
     }
 
+    suspend fun deleteExpense(expense: Expense){
+        expenseDao.deleteExpense(expense)
+    }
+
 }

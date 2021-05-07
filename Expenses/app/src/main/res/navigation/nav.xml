@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_deleteFragment_to_mainPage"
             app:destination="@id/mainPage" />
+        <argument
+            android:name="ExpenseArgs"
+            app:argType="com.example.expenses.fragments.Data.Expense" />
     </fragment>
     <fragment
         android:id="@+id/addFragment"
