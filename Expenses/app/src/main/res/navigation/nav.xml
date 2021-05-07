@@ -29,7 +29,7 @@
     <fragment
         android:id="@+id/addFragment"
         android:name="com.example.expenses.fragments.add.AddFragment"
-        android:label="fragment_add"
+        android:label="Add Expense"
         tools:layout="@layout/fragment_add" >
         <action
             android:id="@+id/action_addFragment_to_mainPage"
