@@ -9,11 +9,11 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        app:cardCornerRadius="16dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_double"
+        android:layout_marginTop="@dimen/margin_triple"
+        android:layout_marginEnd="@dimen/margin_double"
+        app:cardCornerRadius="@dimen/margin_double"
         app:cardElevation="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,52 +28,50 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_quadra"
+                android:layout_marginTop="@dimen/margin_triple"
                 android:text="Hello"
                 android:textColor="@color/white"
                 android:textSize="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.049"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.197" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/ah_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:text="Sinan"
+                android:layout_marginTop="@dimen/margin_default"
+                android:layout_marginBottom="@dimen/margin_triple"
+                android:text="Sir Sinan"
                 android:textColor="@color/white"
-                android:textSize="16dp"
+                android:textSize="@dimen/margin_double"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView"
-                app:layout_constraintVertical_bias="0.434" />
+                app:layout_constraintStart_toStartOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_marginTop="@dimen/margin_triple"
+                android:layout_marginEnd="@dimen/margin_quadra"
                 android:text="Expense"
                 android:textColor="@color/white"
-                android:textSize="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:textSize="@dimen/margin_double"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.345" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/ah_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginTop="@dimen/margin_default"
+                android:layout_marginBottom="@dimen/margin_triple"
                 android:text="9000TL"
                 android:textColor="@color/white"
-                android:textSize="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="@dimen/margin_double"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textView3"
                 app:layout_constraintTop_toBottomOf="@+id/textView3" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -81,57 +79,66 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/tl"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_default"
+        android:layout_marginEnd="@dimen/margin_default"
         android:backgroundTint="@color/white"
         android:text="TL"
         android:textColor="@color/black"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toStartOf="@+id/sterlin"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/materialCardView"
         app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/sterlin"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_default"
         android:backgroundTint="@color/white"
-        android:text="STERLIN"
+        android:text="STR"
         android:textColor="@color/black"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toStartOf="@+id/euro"
         app:layout_constraintStart_toEndOf="@+id/tl"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+        app:layout_constraintTop_toTopOf="@+id/tl" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/euro"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_default"
         android:backgroundTint="@color/white"
         android:text="EURO"
         android:textColor="@color/black"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toStartOf="@+id/dolar"
         app:layout_constraintStart_toEndOf="@+id/sterlin"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+        app:layout_constraintTop_toTopOf="@+id/tl" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/dolar"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
         android:text="DOLAR"
         android:textColor="@color/black"
         app:cornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/materialCardView"
         app:layout_constraintStart_toEndOf="@+id/euro"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+        app:layout_constraintTop_toTopOf="@+id/tl" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ah_recycler"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginEnd="@dimen/margin_default"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sterlin"
         tools:listitem="@layout/fragment_recycler_item"></androidx.recyclerview.widget.RecyclerView>
 

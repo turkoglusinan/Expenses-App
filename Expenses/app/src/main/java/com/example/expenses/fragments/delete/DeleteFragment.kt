@@ -30,7 +30,13 @@ class DeleteFragment : Fragment() {
         v = inflater.inflate(R.layout.fragment_delete, container, false)
         mExpenseViewModel = ViewModelProvider(this).get(ExpenseViewModel::class.java)
         v.delete_explanation.text = args.expenseArgs.explanation
-        v.delete_expense.text = args.expenseArgs.expense.toString()
+        v.delete_expense.text = args.expenseArgs.expense.toString()+" "+when(args.expenseArgs.currency){
+                "TRY" -> "₺"
+                "GBP" -> "£"
+                "EUR" -> "€"
+                "USD" -> "$"
+                else -> "₺"
+            }
 
         v.delete_icon.setImageResource(
             when(args.expenseArgs.type){

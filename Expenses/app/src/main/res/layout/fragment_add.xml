@@ -99,10 +99,11 @@
             android:text="TL" />
 
         <RadioButton
-            android:id="@+id/USD"
+            android:id="@+id/GBP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dolar" />
+            android:text="Sterlin" />
+
 
         <RadioButton
             android:id="@+id/EURO"
@@ -111,10 +112,10 @@
             android:text="Euro" />
 
         <RadioButton
-            android:id="@+id/GBP"
+            android:id="@+id/USD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sterlin" />
+            android:text="Dolar" />
 
     </RadioGroup>
 

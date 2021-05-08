@@ -10,7 +10,7 @@
 
         android:id="@+id/rvitem"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_default"
         app:cardCornerRadius="@dimen/margin_double"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,38 +22,42 @@
             android:id="@+id/riLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="@dimen/margin_quadra">
+            >
 
             <ImageView
                 android:id="@+id/riIcon"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_marginStart="@dimen/margin_triple"
+                android:layout_marginTop="@dimen/margin_double"
+                android:layout_marginBottom="@dimen/margin_double"
                 app:iconTint="@color/black"
-                app:srcCompat="@drawable/rent_icon"
-                app:layout_constraintEnd_toStartOf="@id/riTextView"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/rent_icon" />
 
             <TextView
                 android:id="@+id/riTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Elektrik"
-                android:textSize="16dp"
-                android:layout_marginEnd="@dimen/margin_double"
-                app:layout_constraintEnd_toStartOf="@id/riMoneyView"
-                app:layout_constraintStart_toEndOf="@id/riIcon"
+                android:textSize="@dimen/margin_double"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/riMoneyView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_quadra"
                 android:text="60TL"
-                android:textSize="16dp"
-                android:layout_marginLeft="@dimen/margin_quadra"
+                android:textSize="@dimen/margin_double"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/riTextView"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

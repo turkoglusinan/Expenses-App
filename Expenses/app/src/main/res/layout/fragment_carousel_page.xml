@@ -27,7 +27,7 @@
         android:layout_marginEnd="@dimen/margin_quadra"
         android:gravity="center"
         android:textColor="@color/colorBlack"
-        android:textSize="20sp"
+        android:textSize="32sp"
         app:layout_constraintTop_toBottomOf="@id/carouselPageImage"
         tools:text="This is the title" />
 
@@ -40,7 +40,7 @@
         android:layout_marginEnd="@dimen/margin_quadra"
         android:gravity="center"
         android:textColor="@color/colorGrey"
-        android:textSize="16sp"
+        android:textSize="24sp"
         app:layout_constraintTop_toBottomOf="@id/carouselPageTitle"
         tools:text="This is the text" />
 </androidx.constraintlayout.widget.ConstraintLayout>
