@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.expenses.R
+import com.example.expenses.databinding.FragmentRecyclerItemBinding
 import com.example.expenses.fragments.Data.Expense
 import kotlinx.android.synthetic.main.fragment_recycler_item.view.*
 
@@ -14,19 +15,19 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
 
     private var expenseList = emptyList<Expense>()
 
-    class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    class MyViewHolder(val binding: FragmentRecyclerItemBinding): RecyclerView.ViewHolder(binding.root){
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.fragment_recycler_item, parent, false))
+        return MyViewHolder(FragmentRecyclerItemBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = expenseList[position]
-        holder.itemView.riTextView.text = currentItem.explanation
-        holder.itemView.riMoneyView.text = currentItem.expense.toString()
-        holder.itemView.riIcon.setImageResource(
+        holder.binding.riTextView.text = currentItem.explanation
+        holder.binding.riMoneyView.text = currentItem.expense.toString()+currentItem.currency
+        holder.binding.riIcon.setImageResource(
             when(currentItem.type){
                 0 -> R.drawable.bill_icon
                 1 -> R.drawable.rent_icon
@@ -34,7 +35,7 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
                 else -> R.drawable.other_icon
             }
         )
-        holder.itemView.riIcon.setColorFilter(
+        holder.binding.riIcon.setColorFilter(
             ContextCompat.getColor(holder.itemView.context,
             when(currentItem.type) {
                 0 -> R.color.orange

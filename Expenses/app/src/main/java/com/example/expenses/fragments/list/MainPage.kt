@@ -2,6 +2,7 @@ package com.example.expenses.fragments.list
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.expenses.Currency.MainViewModel
+import com.example.expenses.Currency.MainViewModelFactory
+import com.example.expenses.Currency.Repository
 import com.example.expenses.R
 import com.example.expenses.fragments.Data.ExpenseViewModel
 import com.google.android.material.textfield.TextInputEditText
@@ -26,6 +30,7 @@ class MainPage : Fragment() {
     val FILE = "com.example.expenses"
     lateinit var v: View
     private lateinit var mExpenseViewModel: ExpenseViewModel
+    private lateinit var viewModel: MainViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +38,8 @@ class MainPage : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_main_page, container, false)
+
+        getCurrency()
 
         //RecyclerView
         val adapter = ListAdapter()
@@ -47,7 +54,7 @@ class MainPage : Fragment() {
         })
 
         val name = v.ah_name
-        v.ah_floatingaddbtn.setOnClickListener{
+        v.ah_floatingaddbtn.setOnClickListener {
             findNavController().navigate(R.id.action_mainPage_to_addFragment)
         }
 
@@ -67,7 +74,6 @@ class MainPage : Fragment() {
         } else {
             nameText.text = preferences.getString(NAME, "Deniz")
         }
-
     }
 
     fun nameChange() {
@@ -95,7 +101,14 @@ class MainPage : Fragment() {
         }
     }
 
-
-
+    fun getCurrency() {
+        val repository = Repository()
+        val viewModelFactory = MainViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+        viewModel.getPost()
+        viewModel.myResponse.observe(requireActivity(), Observer { response ->
+            Log.d("Response", response.rates.TRY.toString())
+        })
+    }
 
 }

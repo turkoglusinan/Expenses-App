@@ -89,4 +89,5 @@ class CarouselPager(context: Context, attributeSet: AttributeSet? = null, defSty
     interface CarouselListener {
         fun onCarouselFinished(skipped: Boolean = false)
     }
+
 }
