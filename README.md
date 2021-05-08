@@ -37,6 +37,8 @@ I used Currency Api here is the [Currency Api Link](https://api.ratesapi.io/api/
 
 # Türkçe
 
+## Yükleme - Çalıştırma
+
 Klasör oluşturup projeyi yaptığım için projeyi çalıştırmak istiyorsanız, projeyi indirip Android Studio ile açmalısınız.
 
 # English
