@@ -57,9 +57,9 @@ class AddFragment : Fragment() {
             }
             var currency: String = "GBP"
             when (currencyRGroup.checkedRadioButtonId) {
-                R.id.TL -> currency = "TL"
+                R.id.TL -> currency = "TRY"
                 R.id.USD -> currency = "USD"
-                R.id.EURO -> currency = "EURO"
+                R.id.EURO -> currency = "EUR"
                 R.id.GBP -> currency = "GBP"
             }
             //Create User Object

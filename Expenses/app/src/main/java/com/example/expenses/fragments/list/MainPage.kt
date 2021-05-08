@@ -1,6 +1,7 @@
 package com.example.expenses.fragments.list
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -18,9 +19,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.expenses.Currency.MainViewModel
 import com.example.expenses.Currency.MainViewModelFactory
 import com.example.expenses.Currency.Repository
+import com.example.expenses.CurrencyConverter.CurrencyConverter
 import com.example.expenses.R
 import com.example.expenses.fragments.Data.ExpenseViewModel
 import com.google.android.material.textfield.TextInputEditText
+import kotlinx.android.synthetic.main.fragment_add.*
 import kotlinx.android.synthetic.main.fragment_main_page.view.*
 
 class MainPage : Fragment() {
@@ -39,19 +42,9 @@ class MainPage : Fragment() {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_main_page, container, false)
 
+
         getCurrency()
-
-        //RecyclerView
-        val adapter = ListAdapter()
-        val recyclerView = v.ah_recycler
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
-        //userViewModel
-        mExpenseViewModel = ViewModelProvider(this).get(ExpenseViewModel::class.java)
-        mExpenseViewModel.readAllData.observe(viewLifecycleOwner, Observer { expense ->
-            adapter.setData(expense)
-        })
+        Recycler("TRY")
 
         val name = v.ah_name
         v.ah_floatingaddbtn.setOnClickListener {
@@ -61,7 +54,51 @@ class MainPage : Fragment() {
         name.setOnClickListener {
             nameChange()
         }
+
+        v.tl.setOnClickListener {
+            Recycler("TRY")
+        }
+
+        v.sterlin.setOnClickListener {
+            Recycler("GBP")
+        }
+
+        v.euro.setOnClickListener {
+            Recycler("EUR")
+        }
+
+        v.dolar.setOnClickListener {
+            Recycler("USD")
+        }
+
         return v
+    }
+
+    fun Recycler(base: String){
+        //RecyclerView
+        val adapter = ListAdapter(requireContext(), base)
+        val recyclerView = v.ah_recycler
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        val converter = CurrencyConverter(requireContext())
+
+        //userViewModel
+        mExpenseViewModel = ViewModelProvider(this).get(ExpenseViewModel::class.java)
+        mExpenseViewModel.readAllData.observe(viewLifecycleOwner, Observer { expense ->
+            adapter.setData(expense)
+
+            var sum : Double = 0.0
+            for (exp in expense){
+                sum+= converter.convert(exp.currency, base, exp.expense)
+            }
+            v.ah_money.setText(String.format("%.2f", sum)+" "+ when(base){
+                "TRY" -> "₺"
+                "GBP" -> "£"
+                "EUR" -> "€"
+                "USD" -> "$"
+                else -> "₺"
+            })
+        })
     }
 
     fun HName() {
@@ -102,12 +139,21 @@ class MainPage : Fragment() {
     }
 
     fun getCurrency() {
+        val prefences = requireContext().getSharedPreferences(FILE, Context.MODE_PRIVATE)
+        val editor = prefences.edit()
+
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
         viewModel.getPost()
         viewModel.myResponse.observe(requireActivity(), Observer { response ->
             Log.d("Response", response.rates.TRY.toString())
+            editor.putString("EUR", response.base)
+            editor.putFloat("EUR", 1.0F)
+            editor.putFloat("TRY", response.rates.TRY.toString().toFloat())
+            editor.putFloat("USD", response.rates.USD.toString().toFloat())
+            editor.putFloat("GBP", response.rates.GBP.toString().toFloat())
+            editor.apply()
         })
     }
 
